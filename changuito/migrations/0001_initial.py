@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('creation_date', models.DateTimeField(verbose_name='creation date', default=django.utils.timezone.now)),
                 ('checked_out', models.BooleanField(verbose_name='checked out', default=False)),
-                ('user', models.ForeignKey(blank=True, null=True, to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(blank=True, null=True, to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name_plural': 'carts',
@@ -34,8 +34,8 @@ class Migration(migrations.Migration):
                 ('quantity', models.DecimalField(decimal_places=3, verbose_name='quantity', max_digits=18)),
                 ('unit_price', models.DecimalField(decimal_places=2, verbose_name='unit price', max_digits=18)),
                 ('object_id', models.PositiveIntegerField()),
-                ('cart', models.ForeignKey(verbose_name='cart', to='changuito.Cart')),
-                ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
+                ('cart', models.ForeignKey(verbose_name='cart', to='changuito.Cart', on_delete=models.CASCADE)),
+                ('content_type', models.ForeignKey(to='contenttypes.ContentType', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name_plural': 'items',
