@@ -32,7 +32,7 @@ class CartProxy(object):
         user = request.user
         try:
             # First search by user
-            if not user.is_anonymous():
+            if not user.is_anonymous:
                 cart = models.Cart.objects.get(user=user, checked_out=False)
             # If not, search by request id
             else:
